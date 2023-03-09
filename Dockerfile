@@ -1,6 +1,6 @@
 FROM alpine:3.17.2
 
-LABEL maintainer="Richard Kojedzinszky <richard@kojedz.in>"
+LABEL org.opencontainers.image.authors="Richard Kojedzinszky <richard@kojedz.in>"
 
 RUN \
     apk --no-cache add gettext
