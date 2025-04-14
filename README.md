@@ -6,4 +6,4 @@ The entrypoint will process elements listed in environment variable `CONFIG_SOUR
 
 `CONFIG_SOURCE_DIR` defaults to `/config.source`.
 
-For exact operation, see [entrypoint.sh](assets/entrypoint.sh).
+For exact operation, see [entrypoint.service-base.sh](assets/usr/local/sbin/entrypoint.service-base.sh).

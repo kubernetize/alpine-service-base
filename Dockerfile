@@ -7,7 +7,4 @@ RUN \
 
 COPY assets/ /
 
-ENV \
-    CONFIG_SOURCE_DIR=/config.source
-
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/usr/local/sbin/entrypoint.service-base.sh"]

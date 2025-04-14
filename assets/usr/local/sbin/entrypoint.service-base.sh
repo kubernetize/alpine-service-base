@@ -1,5 +1,8 @@
 #!/bin/sh
 
+: ${CONFIG_SOURCE_DIR=/config.source}
+: ${ENTRYPOINT=/usr/local/sbin/entrypoint.sh}
+
 # Copy files listed in CONFIG_SOURCE_FILES from CONFIG_SOURCE_DIR to their destination
 # If a source file not found, but one with suffix `.envsubst` is, then envsubst is used
 # to substitute environment variables
@@ -23,5 +26,9 @@ for map in $CONFIG_SOURCE_FILES; do
 done
 
 unset CONFIG_SOURCE_DIR CONFIG_SOURCE_FILES
+
+if test -x "${ENTRYPOINT}"; then
+	set -- "${ENTRYPOINT}" "$@"
+fi
 
 exec "$@"
