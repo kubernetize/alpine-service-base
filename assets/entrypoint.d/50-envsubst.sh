@@ -1,11 +1,12 @@
-#!/bin/sh
+# source fragment
 
 : ${CONFIG_SOURCE_DIR=/config.source}
-: ${ENTRYPOINT=/usr/local/sbin/entrypoint.sh}
 
-# Copy files listed in CONFIG_SOURCE_FILES from CONFIG_SOURCE_DIR to their destination
-# If a source file not found, but one with suffix `.envsubst` is, then envsubst is used
-# to substitute environment variables
+# this fragment will process elements listed in environment variable
+# CONFIG_SOURCE_FILES. Each element has the format `<src>:<dst>`, where `src`
+# is relative to environment variable CONFIG_SOURCE_DIR. The process means
+# copying `src` over `dst`, if `src` exists. If `<src>.envsubst` exists,
+# `envsubst` is used to replace environment variables in the source file.
 
 for map in $CONFIG_SOURCE_FILES; do
 	src="${map%%:*}"
@@ -26,9 +27,3 @@ for map in $CONFIG_SOURCE_FILES; do
 done
 
 unset CONFIG_SOURCE_DIR CONFIG_SOURCE_FILES
-
-if test -x "${ENTRYPOINT}"; then
-	set -- "${ENTRYPOINT}" "$@"
-fi
-
-exec "$@"

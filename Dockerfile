@@ -7,4 +7,4 @@ RUN \
 
 COPY assets/ /
 
-ENTRYPOINT ["/usr/local/sbin/entrypoint.service-base.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

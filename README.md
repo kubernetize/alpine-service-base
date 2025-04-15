@@ -2,8 +2,6 @@
 
 Base image for Alpine based service images.
 
-The entrypoint will process elements listed in environment variable `CONFIG_SOURCE_FILES`. Each element has the format `<src>:<dst>`, where `src` is relative to environment variable `CONFIG_SOURCE_DIR`. The process means copying `src` over `dst`, if `src` exists. If `<src>.envsubst` exists, `envsubst` is used to replace environment variables in the source file.
+The image simply walks files under /entrypoint.d/, and sources .sh files and executes others. See default files under [entrypoint.d](assets/entrypoint.d). Finally it executes the command line.
 
-`CONFIG_SOURCE_DIR` defaults to `/config.source`.
-
-For exact operation, see [entrypoint.service-base.sh](assets/usr/local/sbin/entrypoint.service-base.sh).
+When extending the image, files can be placed under /entrypoint.d to alter or extend image startup process.
