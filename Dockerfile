@@ -1,4 +1,4 @@
-FROM alpine:3.22.1
+FROM alpine:3.23.5
 
 LABEL org.opencontainers.image.authors="Richard Kojedzinszky <richard@kojedz.in>"
 
